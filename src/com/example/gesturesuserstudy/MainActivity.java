@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
  
@@ -97,7 +99,7 @@ public class MainActivity extends Activity {
        
 	   for(int i=0;i<locations.size();i++)
 	   	   sendString+=locations.get(i)+",";
-		
+	   sendString+=323;
 	   
 	   Log.d("message is",sendString+"");
 	   new Thread(new Client(sendString)).start();
@@ -153,7 +155,12 @@ public class MainActivity extends Activity {
        mainScreen.setOrientation(LinearLayout.VERTICAL);
        //mainScreen.addView(textView);
        mainScreen.addView(touchView);
+       
+       this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+       this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
        setContentView(mainScreen);
+       
+     
  
    }
    
